@@ -15,14 +15,15 @@
 // this would be located in a separate file for security purposes
 $conn = mysqli_connect("localhost", "root", "test", "currency_exchange");
 
-$affectedRow = 0;
-
 // xml feed named feed.xml
 // this feed would be keep in a separate place, with the data sanitized to ensure no
 // no injections or bad behavior
 
 
-// Exercises 1 through 3 - Retrieving the data from the API (you can assume this will be triggered by a cron job), Parsing the data and then writing it to the database.
+// Exercises 1 through 3 - Retrieving the data from the API (you can assume this will be triggered by a cron job), 
+// parsing the data and then writing it to the database.
+
+$affectedRow = 0;
 $xml = simplexml_load_file("feed.xml") or die("Error: Cannot create object");
 
 foreach ($xml->children() as $row) {
@@ -40,6 +41,7 @@ foreach ($xml->children() as $row) {
     }
 }
 
+// report on xml -> db import 
 if ($affectedRow > 0) {
     $message = $affectedRow . " records inserted";
 } else {
@@ -63,7 +65,7 @@ echo "Amount: ";
 $handle = fopen ("php://stdin","r");
 $amount = fgets($handle);
 
-// TODO : clean up query
+// TODO : sanitize query
 // TODO : check to see that currency exists in database, if not return error/ignore
 $result = mysql_query("SELECT rate FROM currency_convert WHERE currency = '$currency'");
 $rate = mysql_fetch_array($result);
@@ -87,11 +89,11 @@ echo $rate;
 // output: array( 'USD 65.63', 'USD 3.27' )
 // (This can be a separate function from #4.)
 
-// this assumes that daily rates are already written to a database 
+// this assumes that daily rates are already written to a database (as by above) 
 // and the conversion requests already exist in an array
 
-// Consideration: check timestamp on xml feed and compare to previous timestamp to check if rates have been updated.
-// Considreration: check syntax of xml feed to ensure it intergrity (might be part of check within loop)
+// Consideration: check timestamp on xml feed and compare to previous timestamp to check if rates have been updated by cron.
+// Consideration: check syntax of xml feed to ensure it intergrity (might be part of check within loop)
 
 // loop through existing array $rows extracting currency and exchange rate
 // TODO: create a function rather than procedural
