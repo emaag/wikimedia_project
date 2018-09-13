@@ -11,6 +11,7 @@
 
 // I am really excited about this opportunity, please do not hesitate to reach out to me if you have any questions about 
 // my process, my reasoning or just want to chat in general.
+// Also, I hardly use github, hence it's scarcity of content/
 // Thank you, Eric Maag 
 // eric.maag@gmail.com
 
