@@ -131,3 +131,4 @@ foreach ($rows as $row) {
 	echo $rate;
 
 }
+?>
