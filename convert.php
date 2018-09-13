@@ -2,7 +2,9 @@
 
 // As requested I kept this down to 2 hours, I churned this out just referencing php.net once or twice 
 // (mainly for implexml_load_file reference) 
-// this is a very rough initial markup of the code, given more time I would cleaned it up and have it be a bit more granular
+// I've broken up as much as I can the various questions (though 1-3 are all in one) for clarity's sake.
+
+// This is a very rough initial markup of the code, given more time I would cleaned it up and have it be a bit more granular
 // using a function rife with error traps and flags to determine if it was pulling just one exchange manually (ie. user input)
 // or pulling from an xml file, or a database if it was either of the last 2 it would be placed into a multi dimensional array 
 // and then from there run through the function.
